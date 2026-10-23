@@ -1,0 +1,20 @@
+# Render Blueprint: creates the backend web service from this repo
+services:
+  - type: web
+    name: campus-problem-solver-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ESCALATION_HOURS
+        value: "48"
+      - key: NODE_VERSION
+        value: "20"
